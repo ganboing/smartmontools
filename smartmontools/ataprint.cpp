@@ -1186,10 +1186,10 @@ static void set_json_globals_from_smart_attrib(int id, const char * name,
 // onlyfailed=0 : print all attribute values
 // onlyfailed=1:  just ones that are currently failed and have prefailure bit set
 // onlyfailed=2:  ones that are failed, or have failed with or without prefailure bit set
-static void PrintSmartAttribWithThres(const ata_smart_values * data,
-                                      const ata_smart_thresholds_pvt * thresholds,
-                                      const ata_vendor_attr_defs & defs, int rpm,
-                                      int onlyfailed, unsigned char format)
+void PrintSmartAttribWithThres(const ata_smart_values * data,
+                               const ata_smart_thresholds_pvt * thresholds,
+                               const ata_vendor_attr_defs & defs, int rpm,
+                               int onlyfailed, unsigned char format)
 {
   bool brief  = !!(format & ata_print_options::FMT_BRIEF);
   bool hexid  = !!(format & ata_print_options::FMT_HEX_ID);
@@ -1363,7 +1363,7 @@ static void ataPrintSCTCapability(const ata_identify_device *drive)
 }
 
 
-static void PrintGeneralSmartValues(const ata_smart_values *data, const ata_identify_device *drive,
+void PrintGeneralSmartValues(const ata_smart_values *data, const ata_identify_device *drive,
                                     firmwarebug_defs firmwarebugs)
 {
   jout("General SMART Values:\n");

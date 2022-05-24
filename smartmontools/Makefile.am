@@ -39,6 +39,7 @@ AM_CPPFLAGS += -I$(srcdir)/regex -D_REGEX_STANDALONE
 endif
 
 sbin_PROGRAMS = \
+        simplectl \
         smartctl \
         smartd
 
@@ -132,6 +133,19 @@ smartctl_DEPENDENCIES += smartctl_res.o
 
 endif
 
+simplectl_SOURCES = \
+        utility.cpp \
+        json.cpp \
+        atacmds.cpp \
+        ataprint.cpp \
+        knowndrives.cpp \
+        dev_interface.cpp \
+        dev_ata_cmd_set.cpp \
+        simplectl.cpp
+
+simplectl_CPPFLAGS = $(AM_CPPFLAGS) -ffunction-sections -fdata-sections
+
+simplectl_LDFLAGS = -Wl,--wrap=memcpy -Wl,--gc-sections -static-libstdc++
 
 smartd_SOURCES = \
         smartd.cpp \

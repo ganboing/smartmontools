@@ -1,0 +1,1 @@
+https://github.com/nlohmann/json/releases/download/v3.10.5/json.hpp

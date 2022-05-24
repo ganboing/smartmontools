@@ -105,5 +105,11 @@ struct ata_print_options
 };
 
 int ataPrintMain(ata_device * device, const ata_print_options & options);
+void PrintGeneralSmartValues(const ata_smart_values *data, const ata_identify_device *drive,
+                             firmwarebug_defs firmwarebugs);
+void PrintSmartAttribWithThres(const ata_smart_values * data,
+                               const ata_smart_thresholds_pvt * thresholds,
+                               const ata_vendor_attr_defs & defs, int rpm,
+                               int onlyfailed, unsigned char format);
 
 #endif
